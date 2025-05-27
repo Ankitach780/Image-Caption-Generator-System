@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from .forms import ImageUploadForm
 from .models import CaptionHistory
 from .caption_generator import generate_caption
@@ -14,8 +14,14 @@ def index(request):
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.user = request.user
+
+            if request.user.is_authenticated:
+                obj.user = request.user
+            else:
+                obj.user = None
+
             obj.save()
+
             image_path = obj.image.path
 
             try:
@@ -32,10 +38,12 @@ def index(request):
                 obj.caption = f"Error generating caption: {e}"
                 obj.save()
 
-            # Get grouped history
-            history = CaptionHistory.objects.filter(user=request.user).order_by('-created_at')[:10]
-            from collections import defaultdict
-            from datetime import datetime
+            # Grouped history only if user is authenticated
+            if request.user.is_authenticated:
+                history = CaptionHistory.objects.filter(user=request.user).order_by('-created_at')[:10]
+            else:
+                history = []
+
             history_grouped = defaultdict(list)
             for entry in history:
                 date_str = entry.created_at.strftime("%d %B %Y")
@@ -51,9 +59,12 @@ def index(request):
     else:
         form = ImageUploadForm()
 
-    # GET request: just load form and history
-    history = CaptionHistory.objects.order_by('-created_at')[:10]
-    from collections import defaultdict
+    # GET request: Load form and history
+    if request.user.is_authenticated:
+        history = CaptionHistory.objects.filter(user=request.user).order_by('-created_at')[:10]
+    else:
+        history = []
+
     history_grouped = defaultdict(list)
     for entry in history:
         date_str = entry.created_at.strftime("%d %B %Y")
