@@ -13,10 +13,10 @@ This project is a web application built with Django that allows users to upload 
 
 1. Clone the repository:
 
-   ```bash
-   git clone <your-repo-url>
-   cd <your-repo-folder>
-   ```
+```bash
+git clone [<your-repo-url>](https://github.com/Ankitach780/Image-Caption-Generator-System)
+cd <[your-repo-folder](https://github.com/Ankitach780/Image-Caption-Generator-System)>
+```
 2. Create and activate a virtual environment:
 
 ```bash
@@ -27,9 +27,9 @@ venv\Scripts\activate       # Windows
 3. Install dependencies:
 ```bash
 pip install -r requirements.txt
-Setup environment variables for OAuth credentials:
 ```
-4. Create a .env file in the root directory (do not commit this file):
+4. Setup environment variables for OAuth credentials:
+-Create a .env file in the root directory (do not commit this file):
 
 ```env
 GOOGLE_CLIENT_ID=your-google-client-id
