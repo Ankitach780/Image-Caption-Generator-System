@@ -8,3 +8,4 @@ db.sqlite3
 .json
 .vscode/
 .venv/
+/media/images/
