@@ -1,0 +1,10 @@
+# === Jupyter Notebooks ===
+.ipynb_checkpoints/
+db.sqlite3
+/media/
+*.h5
+*.keras
+*.pkl
+.json
+.vscode/
+.venv/

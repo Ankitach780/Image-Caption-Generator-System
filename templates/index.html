@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption Generator</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    
+    <div class="top-bar">
+        <div class="app-logo">Caption Generator</div>
+        <a href="http://localhost:8000/accounts/login/" class="login-button-link">Login</a>
+    </div>
+
+    <!-- Sidebar on the Left -->
+    <div class="sidebar">
+        <h3>History</h3>
+        {% for date, items in history_grouped.items %}
+            <div class="history-date-group">
+                <h4>{{ date }}</h4>
+                <ul>
+                    {% for item in items %}
+                        <li>
+                            <a href="{{ item.image.url }}" target="_blank">{{ item.image.url }}</a><br>
+                            <small>{{ item.caption }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div class="bottom-display">
+            {% if image_url %}
+                <div class="caption-area">
+                    <h2>Generated Caption:</h2>
+                    <img src="{{ image_url }}" alt="Uploaded Image" style="max-width: 100%; height: auto; margin-top: 10px;">
+                    <p><strong>{{ caption }}</strong></p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Upload Form at Bottom Center -->
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+        {% csrf_token %}
+        {{ form.image }}
+        <button type="submit">Upload Image</button>
+    </form>
+<!-- <script>
+    window.onload = () => {
+        document.querySelector('input[type="file"]').value = "";
+    };
+</script> -->
+
+</body>
+</html>
