@@ -14,8 +14,8 @@ This project is a web application built with Django that allows users to upload 
 1. Clone the repository:
 
 ```bash
-git clone [<your-repo-url>](https://github.com/Ankitach780/Image-Caption-Generator-System)
-cd <[your-repo-folder](https://github.com/Ankitach780/Image-Caption-Generator-System)>
+git clone https://github.com/Ankitach780/Image-Caption-Generator-System
+cd https://github.com/Ankitach780/Image-Caption-Generator-System
 ```
 2. Create and activate a virtual environment:
 
