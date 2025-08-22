@@ -66,4 +66,4 @@ The image captioning model and logic used in this project is based on a CNN-LSTM
 This project is licensed under the MIT License.
 
 ## Contact
-For questions or support, contact chaudharyankita@gmail.com
+For questions or support, contact chaudharyankita667@gmail.com
