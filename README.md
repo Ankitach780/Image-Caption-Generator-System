@@ -55,7 +55,7 @@ Visit http://127.0.0.1:8000/ to use the app.
 ## Model Reference
 The image captioning model and logic used in this project is based on a CNN-LSTM architecture. For a detailed explanation and notebook, see my Kaggle notebook here:
 
-Image Caption Generator using CNN and LSTM
+[https://www.kaggle.com/code/ankita20chaudhary/image-caption-generator-using-cnn-and-lstm]
 
 ## Notes
 - Make sure to configure the django.contrib.sites framework and set up your Site object properly to avoid Site matching query does not exist errors.
